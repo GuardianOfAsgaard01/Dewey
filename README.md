@@ -2,7 +2,6 @@
 
 # Dewey #
 --> Script şu an da Dewey Onlu Sistemine göre etiketlerin şemasını oluşturuyor.
-# WorkInProgress #
---> Girilen kitapları depolama.
+--> Girilen kitapları json dosyasında depoluyor.
 # Not #
 --> Renklendirme özelliği bazı terminallerde düzgün çalışmamaktadır.
