@@ -4,7 +4,9 @@ with open('KitapListesi.json', 'r') as k:
     old_data = json.load(k)
 i = len(old_data)
 
+
 class dewey():
+
     def __init__(self, i, kategori, adi, yazari, yayin_yili, old_data):
         self.i = i
         self.kategori = kategori
@@ -15,7 +17,7 @@ class dewey():
         dewey.siniflama_numarasi(self)
 
     def siniflama_numarasi(self):
-        t = "{}.{}".format(self.kategori,self.i+1)
+        t = "{}.{}".format(self.kategori, self.i+1)
         dewey.siniflandirma_kodu(self, t)
 
     def siniflandirma_kodu(self, t):
@@ -82,14 +84,14 @@ while True:
     print("                 ")
 
     if e == "1":
-        kategori = input("Dewey Onlu Sistemi'ne göre kategori numarasını giriniz: ")
+        kategori = input("Dewey'e göre kategori numarasını giriniz: ")
         adi = input("Kitabın adını giriniz: ")
-        yazari = input("Yazarın adını, soyadını giriniz[Belli değilse boş bırakın]: ")
+        yazari = input("Yazarın adını giriniz[Belli değilse boş bırakın]: ")
         yayin_yili = input("Kitabın basım yılını giriniz: ")
         dewey(i, kategori, adi, yazari, yayin_yili, old_data)
 
     elif e == "2":
-        print(json.dumps(old_data, indent = 4))                            
+        print(json.dumps(old_data, indent=4))
 
     elif e == "":
         break
@@ -98,3 +100,4 @@ while True:
         print("xxxxxxxxxxxxx")
         print("Hatalı giriş!")
         print("             ")
+
