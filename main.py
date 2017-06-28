@@ -1,18 +1,21 @@
 import json
-i = 101
+
+with open('KitapListesi.json', 'r') as k:
+    old_data = json.load(k)
+i = len(old_data)
 
 class dewey():
-    def __init__(self, i, kategori, adi, yazari, yayin_yili):
+    def __init__(self, i, kategori, adi, yazari, yayin_yili, old_data):
         self.i = i
         self.kategori = kategori
         self.adi = adi
         self.yazari = yazari
         self.yayin_yili = yayin_yili
+        self.old_data = old_data
         dewey.siniflama_numarasi(self)
 
     def siniflama_numarasi(self):
-        t = "{}.{}".format(self.kategori,self.i)
-        self.i += 1
+        t = "{}.{}".format(self.kategori,self.i+1)
         dewey.siniflandirma_kodu(self, t)
 
     def siniflandirma_kodu(self, t):
@@ -54,9 +57,6 @@ class dewey():
         print("----------")
         print(renk)
         print("----------")
-     
-        with open('KitapListesi.json', 'r') as k:
-            old_data = json.load(k)
 
         new_data = {
             t : {
@@ -66,7 +66,7 @@ class dewey():
             }
         }
 
-        old_data.update(new_data)
+        self.old_data.update(new_data)
 
         with open('KitapListesi.json', 'w') as k:
             json.dump(old_data, k)
@@ -86,11 +86,9 @@ while True:
         adi = input("Kitabın adını giriniz: ")
         yazari = input("Yazarın adını, soyadını giriniz[Belli değilse boş bırakın]: ")
         yayin_yili = input("Kitabın basım yılını giriniz: ")
-        dewey(i, kategori, adi, yazari, yayin_yili)
+        dewey(i, kategori, adi, yazari, yayin_yili, old_data)
 
     elif e == "2":
-        with open('KitapListesi.json', 'r') as k:
-            old_data = json.load(k)
         print(json.dumps(old_data, indent = 4))                            
 
     elif e == "":
